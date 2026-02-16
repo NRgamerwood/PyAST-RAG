@@ -3,3 +3,5 @@ pytest
 chromadb>=0.4.0
 google-generativeai
 python-dotenv
+langchain-text-splitters
+matplotlib

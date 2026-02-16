@@ -28,9 +28,8 @@ def initialize_gemini():
     
     try:
         genai.configure(api_key=api_key)
-        # Using gemini-1.5-flash as the requested 'Gemini 3 Flash' 
-        # (Assuming the user meant the latest high-performance flash model)
-        return genai.GenerativeModel('gemini-1.5-flash')
+        # Using gemini-3-flash-preview as requested
+        return genai.GenerativeModel('gemini-3-flash-preview')
     except Exception as e:
         print(f"\n[!] Error initializing Gemini: {e}")
         return None
@@ -169,7 +168,7 @@ def main():
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
             
-    print("\nGoodbye! Thank you for using Python-AST-RAG.")
+    print("\nGoodbye! Thank you for using PyAST-RAG.")
 
 
 if __name__ == "__main__":
