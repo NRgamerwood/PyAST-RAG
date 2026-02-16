@@ -49,7 +49,7 @@ for chunk in chunks:
 python-ast-rag/
 ├── src/
 │   ├── parser.py       # AST 解析核心逻辑
-│   ├── vector_store.py # 向量数据库交互 (待开发)
+│   ├── vector_store.py # 向量数据库交互
 │   └── utils.py        # 辅助工具
 ├── tests/              # 单元测试
 ├── examples/           # 示例代码库
