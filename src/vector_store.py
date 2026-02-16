@@ -60,7 +60,8 @@ class CodeBaseStore:
             metadatas.append(meta_dict)
             
             # Create a unique ID for each chunk
-            chunk_id = f"{chunk.metadata.file_path}:{chunk.metadata.parent_name or ''}:{chunk.metadata.name}"
+            # Include line number to ensure uniqueness even with same names in a file
+            chunk_id = f"{chunk.metadata.file_path}:{chunk.metadata.name}:{chunk.metadata.line_range[0]}"
             ids.append(chunk_id)
 
         self.collection.add(

@@ -156,9 +156,16 @@ def main():
                 continue
             if query.lower() in ['exit', 'quit', 'q']:
                 break
+
+            #调用检索和生成
             ask_code(query, store, model)
-        except KeyboardInterrupt:
+
+        # 捕获 Ctrl+C (KeyboardInterrupt) 和 Ctrl+D/管道结束 (EOFError)
+        except (KeyboardInterrupt, EOFError):
+            print("\n\nExiting...")
             break
+
+        # 捕获其他意料之外的错误
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
             
