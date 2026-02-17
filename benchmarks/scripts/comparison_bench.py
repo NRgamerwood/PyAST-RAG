@@ -20,7 +20,6 @@ def get_llm_response(prompt):
         return "Error: No API Key found. Please set GEMINI_API_KEY in .env."
 
     genai.configure(api_key=api_key)
-    # Using gemini-3-flash-preview as requested
     try:
         model = genai.GenerativeModel('gemini-3-flash-preview')
         response = model.generate_content(prompt)
@@ -31,16 +30,13 @@ def get_llm_response(prompt):
 
 def run_benchmark():
     """Runs the comparison benchmark."""
-    # Ensure the path is correct for the cloned requests library
     target_file = "tests/data/requests/requests/sessions.py"
     if not os.path.exists(target_file):
-        # Try alternate path just in case
         alt_path = "tests/data/requests/src/requests/sessions.py"
         if os.path.exists(alt_path):
             target_file = alt_path
         else:
             print(f"Error: Target file {target_file} not found.")
-            print("Please ensure the integration tests have cloned the requests library.")
             return
 
     query = "在 Session 类中，request 方法是如何处理参数并调用底层 dispatch 的？"
@@ -51,23 +47,20 @@ def run_benchmark():
     print(f"🚀 Starting Benchmark on: {target_file}")
     print(f"❓ Query: {query}\n")
 
-    # --- 🟢 Baseline: LangChain RecursiveCharacterTextSplitter ---
+    # --- 🟢 Baseline: LangChain ---
     print("Running Baseline: LangChain...")
-    # LangChain default recommended splitting parameters
     lc_splitter = RecursiveCharacterTextSplitter(
         chunk_size=800,
         chunk_overlap=100,
         add_start_index=True
     )
     lc_chunks = lc_splitter.split_text(source_code)
-    # Simulate retrieval: Find the first chunk containing 'def request'
-    lc_context = next((c for c in lc_chunks if "def request" in c), "No matching chunk found in LangChain.")
+    lc_context = next((c for c in lc_chunks if "def request" in c), "No matching chunk found.")
 
     # --- 🟢 Ours: PyAST-RAG ---
     print("Running PyAST-RAG...")
     parser = ASTParser()
     ast_chunks = parser.parse_source(source_code, target_file)
-    # Retrieval logic: Match name 'request' and parent 'Session'
     ast_context_obj = next(
         (c for c in ast_chunks if c.metadata.name == "request" and c.metadata.parent_name == "Session"),
         None
@@ -76,7 +69,7 @@ def run_benchmark():
     if ast_context_obj:
         ast_context = ast_context_obj.content
     else:
-        ast_context = "PyAST-RAG could not find the specific chunk (Session.request)."
+        ast_context = "PyAST-RAG could not find the specific chunk."
 
     # --- 🤖 LLM Judgement ---
     prompt_template = """

@@ -1,0 +1,4 @@
+langchain-text-splitters
+matplotlib
+google-generativeai
+python-dotenv

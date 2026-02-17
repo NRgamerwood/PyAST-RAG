@@ -50,33 +50,25 @@ def run_quantitative_stats():
             lc_chunks = lc_splitter.split_text(content)
             for chunk in lc_chunks:
                 stats["baseline"]["total_chunks"] += 1
-                
-                # Metric A: Syntax Error Rate
-                # Dedent is needed because the splitter might pick up indented blocks
                 try:
                     ast.parse(textwrap.dedent(chunk))
                 except SyntaxError:
                     stats["baseline"]["syntax_errors"] += 1
                 
-                # Metric B: Function Fragmentation
                 if "def " in chunk:
                     stats["baseline"]["total_def_chunks"] += 1
                     try:
                         parsed = ast.parse(textwrap.dedent(chunk))
-                        # Check if any top-level node is a FunctionDef
                         has_complete_func = any(isinstance(node, ast.FunctionDef) for node in ast.walk(parsed))
                         if not has_complete_func:
                             stats["baseline"]["incomplete_functions"] += 1
                     except SyntaxError:
-                        # If it doesn't parse and contains 'def', it's fragmented
                         stats["baseline"]["incomplete_functions"] += 1
             
             # --- 🟢 2. PyAST Stats (Our Project) ---
             ast_chunks = parser.parse_source(content, file_path)
             for chunk in ast_chunks:
                 stats["pyast"]["total_chunks"] += 1
-                # Metric C: Metadata Richness
-                # Count the number of non-None metadata fields
                 meta_dict = chunk.metadata.model_dump()
                 stats["pyast"]["metadata_fields_sum"] += len([v for v in meta_dict.values() if v is not None])
 
@@ -86,26 +78,32 @@ def run_quantitative_stats():
     # Calculations
     b_total = stats["baseline"]["total_chunks"]
     b_syntax_err_rate = (stats["baseline"]["syntax_errors"] / b_total * 100) if b_total > 0 else 0
-    
     b_def_total = stats["baseline"]["total_def_chunks"]
     b_frag_rate = (stats["baseline"]["incomplete_functions"] / b_def_total * 100) if b_def_total > 0 else 0
-    
     p_total = stats["pyast"]["total_chunks"]
     p_avg_meta = (stats["pyast"]["metadata_fields_sum"] / p_total) if p_total > 0 else 0
 
-    # Output Table
-    print("\n" + "="*75)
-    print(f"{'TECHNOLOGICAL METRIC':<40} | {'LangChain (800)':<15} | {'PyAST-RAG':<10}")
-    print("-" * 75)
-    print(f"{'Total Chunks Created':<40} | {b_total:<15} | {p_total:<10}")
-    print(f"{'Syntax Error Rate (Invalid Python)':<40} | {b_syntax_err_rate:>14.2f}% | {'0.00%':<10}")
-    print(f"{'Function Fragmentation Rate':<40} | {b_frag_rate:>14.2f}% | {'0.00%':<10}")
-    print(f"{'Average Metadata Fields per Chunk':<40} | {'1 (text)':<15} | {p_avg_meta:>10.1f}")
-    print("="*75)
-    print("\nCONCLUSION:")
-    print("1. PyAST-RAG ensures 100% syntactic validity, eliminating 'broken' code snippets.")
-    print("2. PyAST-RAG provides much richer metadata for precise context-aware retrieval.")
-    print("="*75 + "\n")
+    # Output Table Generation
+    output_dir = "benchmarks/results"
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, "stats_table.txt")
+
+    lines = []
+    lines.append("\n" + "="*75)
+    lines.append(f"{'TECHNOLOGICAL METRIC':<40} | {'LangChain (800)':<15} | {'PyAST-RAG':<10}")
+    lines.append("-" * 75)
+    lines.append(f"{'Total Chunks Created':<40} | {b_total:<15} | {p_total:<10}")
+    lines.append(f"{'Syntax Error Rate (Invalid Python)':<40} | {b_syntax_err_rate:>14.2f}% | {'0.00%':<10}")
+    lines.append(f"{'Function Fragmentation Rate':<40} | {b_frag_rate:>14.2f}% | {'0.00%':<10}")
+    lines.append(f"{'Average Metadata Fields per Chunk':<40} | {'1 (text)':<15} | {p_avg_meta:>10.1f}")
+    lines.append("="*75)
+    
+    report = "\n".join(lines)
+    print(report)
+    
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(report)
+    print(f"\nSuccess: Quantitative stats saved to {output_file}")
 
 
 if __name__ == "__main__":

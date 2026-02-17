@@ -18,15 +18,15 @@
 3. **完全本地化闭环**: 从解析到向量存储完全本地运行，保护代码隐私（仅生成阶段调用 LLM API）。
 
 ## 技术指标 (Benchmark)
-针对 `requests` 库全量代码的对比测试结果如下：
+针对 `requests` 库全量代码 (36 个 Python 文件) 的对比测试结果显示，**PyAST-RAG** 在保持代码语义完整性方面具有压倒性优势：
 
-| 技术指标 | LangChain (Baseline 800) | PyAST-RAG (本项目) |
+| 评估维度 | LangChain (Baseline) | **PyAST-RAG (本项目)** |
 | :--- | :--- | :--- |
 | **语法错误率 (Invalid Python)** | 57.47% | **0.00%** |
 | **函数体切断率 (Fragmentation)** | 51.60% | **0.00%** |
-| **平均元数据字段数** | 1 (仅文本) | **5.7 (结构化)** |
+| **平均元数据字段数** | 1.0 (仅文本) | **5.7 (结构化)** |
 
-> *注：Baseline 使用 `RecursiveCharacterTextSplitter.from_language(Language.PYTHON)`，chunk_size=800。*
+> **注**：Baseline 使用 LangChain 的 `RecursiveCharacterTextSplitter.from_language(Language.PYTHON)`，并设置 `chunk_size=800`。以上数据通过 `benchmarks/scripts/quantitative_stats.py` 自动化脚本计算得出。
 
 ## 核心架构
 ```mermaid
@@ -74,6 +74,10 @@ python-ast-rag/
 │   ├── vector_store.py # 向量数据库交互
 │   └── utils.py        # 辅助工具
 ├── tests/              # 单元测试
+├── benchmarks/         # 基准测试对比 (Baseline 对比与统计)
+│   ├── scripts/        # 统计与对比脚本
+│   ├── results/        # 可视化图表与数据报告
+│   └── requirements_bench.txt
 ├── examples/           # 示例代码库
 ├── requirements.txt
 └── README.md

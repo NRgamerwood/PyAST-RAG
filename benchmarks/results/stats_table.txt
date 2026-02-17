@@ -1,0 +1,9 @@
+
+===========================================================================
+TECHNOLOGICAL METRIC                     | LangChain (800) | PyAST-RAG 
+---------------------------------------------------------------------------
+Total Chunks Created                     | 649             | 756       
+Syntax Error Rate (Invalid Python)       |          57.47% | 0.00%     
+Function Fragmentation Rate              |          51.60% | 0.00%     
+Average Metadata Fields per Chunk        | 1 (text)        |        5.7
+===========================================================================
