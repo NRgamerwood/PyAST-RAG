@@ -1,14 +1,14 @@
 # 🏆 Global Industry Benchmark Report
 
 **Target Codebase**: `psf/requests` (11164 lines)
-**Evaluated at**: 2026-02-17 01:08:08
+**Evaluated at**: 2026-02-17 07:14:07
 
 | Method | Syntax Validity | Func Integrity | Decorator Drop | Scope Accuracy | Overhead (ms/10k lines) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| Simple Splitter | 32.3% | 33.8% | 10.9% | 0.0% | 6.70 |
-| LangChain Regex | 42.5% | 48.4% | 33.6% | 0.0% | 6.42 |
-| LlamaIndex (Tree-sitter) | 37.4% | 45.2% | 24.8% | 0.0% | 150.94 |
-| PyAST-RAG (Ours) | 100.0% | 100.0% | 0.0% | 79.4% | 1182.68 |
+| Simple Splitter | 32.3% | 33.8% | 10.9% | 0.0% | 4.35 |
+| LangChain Regex | 42.5% | 48.4% | 33.6% | 0.0% | 9.45 |
+| LlamaIndex (Tree-sitter) | 37.4% | 45.2% | 24.8% | 0.0% | 138.24 |
+| PyAST-RAG (Ours) | 100.0% | 100.0% | 0.0% | 79.4% | 1301.44 |
 
 
 ## 🏁 Executive Summary
