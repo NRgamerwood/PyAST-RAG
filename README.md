@@ -102,3 +102,12 @@ python-ast-rag/
 ## 贡献指南
 请遵循 PEP 8 规范，并确保所有新功能都有对应的单元测试。
 Git 提交请使用 Conventional Commits 规范。
+
+## Live Benchmark Wall
+| Time | Repository | Chunks | Syntax % | Meta Density |
+| :--- | :--- | :---: | :---: | :---: |
+| 2026-02-17 07:40 | [zscole/model-hierarchy-skill](https://github.com/zscole/model-hierarchy-skill) | 31 | 100% | 5.6 |
+| 2026-02-17 07:40 | [Mathews-Tom/no-magic](https://github.com/Mathews-Tom/no-magic) | 859 | 100% | 5.5 |
+| 2026-02-17 07:40 | [FireRedTeam/FireRed-Image-Edit](https://github.com/FireRedTeam/FireRed-Image-Edit) | 12 | 100% | 5.0 |
+| 2026-02-17 07:40 | [MooseGoose0701/skill-compose](https://github.com/MooseGoose0701/skill-compose) | 1922 | 100% | 5.4 |
+| 2026-02-17 07:40 | [HKUDS/FastCode](https://github.com/HKUDS/FastCode) | 996 | 100% | 5.7 |
