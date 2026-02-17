@@ -101,7 +101,7 @@ def main():
     print(f"🚀 Starting Auto-Evolution Cycle: {datetime.now()}")
     
     # 1. Fetch top 5 trending repos
-    repos = get_trending_python_repos(limit=5)
+    repos = get_trending_python_repos(limit=50)
     if not repos:
         print("  [!] No repos fetched. Exiting.")
         return
