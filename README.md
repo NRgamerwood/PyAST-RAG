@@ -108,7 +108,7 @@ Git 提交请使用 Conventional Commits 规范。
 本项目自动化实验室已成功处理的代码库列表：
 <!-- CONQUERED_LIST -->
 - 🏆 `deepgenteam/deepgen`
-- 🏆 `3stoneBrother/code-audit`
 - 🏆 `nWave-ai/nWave`
+- 🏆 `3stoneBrother/code-audit`
 - 🏆 `ai-native-camp/camp-1`
 - 🏆 `Jane-xiaoer/x-fetcher`
