@@ -10,6 +10,7 @@ from datetime import datetime
 from src.trending_fetcher import get_trending_python_repos
 from src.parser import ASTParser
 from src.utils import get_all_python_files, read_file
+from benchmarks.scripts.update_global_metrics import count_loc_in_dir, update_metrics_json, update_readme_placeholders
 
 
 def update_readme_wall(entry: str):
@@ -49,8 +50,8 @@ def update_readme_wall(entry: str):
         f.writelines(lines)
 
 
-def evaluate_repo(name: str, url: str) -> str:
-    """Clones a repo, runs metrics, and returns a markdown row."""
+def evaluate_repo(name: str, url: str) -> tuple[str, int]:
+    """Clones a repo, runs metrics, and returns (markdown_row, loc)."""
     temp_dir = f"temp_eval_{name.replace('/', '_')}"
     print(f"  [>] Evaluating {name}...")
     
@@ -82,13 +83,15 @@ def evaluate_repo(name: str, url: str) -> str:
                 continue
 
         avg_meta = (total_meta_fields / total_chunks) if total_chunks > 0 else 0
+        loc = count_loc_in_dir(temp_dir)
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
         
-        return f"| {timestamp} | [{name}](https://github.com/{name}) | {total_chunks} | 100% | {avg_meta:.1f} |"
+        entry = f"| {timestamp} | [{name}](https://github.com/{name}) | {total_chunks} | 100% | {avg_meta:.1f} |"
+        return entry, loc
 
     except Exception as e:
         print(f"      [!] Error: {e}")
-        return ""
+        return "", 0
     finally:
         if os.path.exists(temp_dir):
             shutil.rmtree(temp_dir, ignore_errors=True)
@@ -105,10 +108,14 @@ def main():
 
     # 2. Evaluate each
     for name, url, size in repos:
-        entry = evaluate_repo(name, url)
+        entry, loc = evaluate_repo(name, url)
         if entry:
             update_readme_wall(entry)
-            print(f"  [+] Success: {name}")
+            
+            # Update global metrics (LOC and conquered list)
+            metrics_data = update_metrics_json(name, loc)
+            update_readme_placeholders(metrics_data)
+            print(f"  [+] Success: {name} (LOC: {loc})")
 
     print(f"🏁 Cycle complete at {datetime.now()}")
 
