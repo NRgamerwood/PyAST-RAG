@@ -107,8 +107,8 @@ Git 提交请使用 Conventional Commits 规范。
 
 本项目自动化实验室已成功处理的代码库列表：
 <!-- CONQUERED_LIST -->
-- 🏆 `Jane-xiaoer/x-fetcher`
+- 🏆 `3stoneBrother/code-audit`
 - 🏆 `AM1403x/financial-agent-india`
-- 🏆 `thanhdo1110/Locket-Gold`
 - 🏆 `AI45Lab/TrinityGuard`
+- 🏆 `thanhdo1110/Locket-Gold`
 - 🏆 `bobek-balinek/claude-lamp`
