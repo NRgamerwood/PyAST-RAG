@@ -110,5 +110,5 @@ Git 提交请使用 Conventional Commits 规范。
 - 🏆 `3stoneBrother/code-audit`
 - 🏆 `AM1403x/financial-agent-india`
 - 🏆 `novotnyllc/dotnet-artisan`
-- 🏆 `AI45Lab/TrinityGuard`
 - 🏆 `bobek-balinek/claude-lamp`
+- 🏆 `AI45Lab/TrinityGuard`
