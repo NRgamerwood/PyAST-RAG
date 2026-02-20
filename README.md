@@ -107,8 +107,8 @@ Git 提交请使用 Conventional Commits 规范。
 
 本项目自动化实验室已成功处理的代码库列表：
 <!-- CONQUERED_LIST -->
+- 🏆 `Superfleys/agent-spec`
 - 🏆 `andyhuo520/html-ppt-designer`
 - 🏆 `yeahhe365/JustSearch`
 - 🏆 `umputun/cc-thingz`
 - 🏆 `Vigno04/discord-selfhosted-alternatives`
-- 🏆 `ShinMegamiBoson/OpenPlanter`
