@@ -107,8 +107,8 @@ Git 提交请使用 Conventional Commits 规范。
 
 本项目自动化实验室已成功处理的代码库列表：
 <!-- CONQUERED_LIST -->
-- 🏆 `arpitg1304/robotics-agent-skills`
 - 🏆 `mco-org/mco`
+- 🏆 `arpitg1304/robotics-agent-skills`
 - 🏆 `blacksiders/SkillPointer`
-- 🏆 `deltatrader01/Polymarket-Trading-Bot`
 - 🏆 `knostic/OpenAnt`
+- 🏆 `deltatrader01/Polymarket-Trading-Bot`
