@@ -110,5 +110,5 @@ Git 提交请使用 Conventional Commits 规范。
 - 🏆 `WtxwNs/RepoCheck`
 - 🏆 `caiwuu/web2api`
 - 🏆 `ythx-101/ask-search`
-- 🏆 `NousResearch/hermes-agent-self-evolution`
 - 🏆 `MasterAlanLab/register`
+- 🏆 `NousResearch/hermes-agent-self-evolution`
