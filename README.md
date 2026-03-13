@@ -109,6 +109,6 @@ Git 提交请使用 Conventional Commits 规范。
 <!-- CONQUERED_LIST -->
 - 🏆 `Sibyl-Research-Team/sibyl-research-system`
 - 🏆 `robertorobotics/Nextis-AIRA-3D`
-- 🏆 `ZimoLiao/scholaraio`
 - 🏆 `longnghiemduc6-art/ob12api`
+- 🏆 `ZimoLiao/scholaraio`
 - 🏆 `securo-finance/securo`
