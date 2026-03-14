@@ -107,8 +107,8 @@ Git 提交请使用 Conventional Commits 规范。
 
 本项目自动化实验室已成功处理的代码库列表：
 <!-- CONQUERED_LIST -->
-- 🏆 `pretyflaco/meetscribe`
-- 🏆 `qntrade1/polymarket-arbitrage-trading-bot`
+- 🏆 `ythx-101/ask-search`
 - 🏆 `robertorobotics/Nextis-AIRA-3D`
+- 🏆 `qntrade1/polymarket-arbitrage-trading-bot`
 - 🏆 `PIPIKAI/auto-painter-win`
 - 🏆 `shuyicc/MathLens`
