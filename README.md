@@ -109,6 +109,6 @@ Git 提交请使用 Conventional Commits 规范。
 <!-- CONQUERED_LIST -->
 - 🏆 `ZimoLiao/scholaraio`
 - 🏆 `PatrikFehrenbach/h1-brain`
-- 🏆 `KeyID-AI/sdk-py`
-- 🏆 `GalaxyGeneralRobotics/LATENT`
 - 🏆 `sstklen/trump-code`
+- 🏆 `GalaxyGeneralRobotics/LATENT`
+- 🏆 `KeyID-AI/sdk-py`
