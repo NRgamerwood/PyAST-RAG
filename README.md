@@ -108,7 +108,7 @@ Git 提交请使用 Conventional Commits 规范。
 本项目自动化实验室已成功处理的代码库列表：
 <!-- CONQUERED_LIST -->
 - 🏆 `OnlyTerp/toolrush`
-- 🏆 `RhuanCruz/swiftui-logo-draw`
-- 🏆 `DannyMac180/astra-advisor`
 - 🏆 `Yean-Sec/StrikeAgent_AtkBrain-Flash`
+- 🏆 `RhuanCruz/swiftui-logo-draw`
 - 🏆 `wz1119/Codex-Minecraft-Gameplay`
+- 🏆 `DannyMac180/astra-advisor`
